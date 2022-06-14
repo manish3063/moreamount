@@ -7,27 +7,23 @@ func main() {
 		{1, 2, 3},
 		{4, 2, 1},
 	}
-	//fmt.Println(input)
-	var sum int
+	fmt.Println(maxwealth(input))
+}
 
-	var addArray = []int{}
+func maxwealth(accounts [][]int) int {
+	answer := 0
+	for i := 0; i < len(accounts); i++ {
+		element := accounts[i]
+		sum := 0
+		for j := 0; j < len(element); j++ {
+			sum = sum + element[j]
 
-	for i := 0; i < len(input); i++ {
-		sum = 0
-		for j := 0; j < len(input[i]); j++ {
-
-			//fmt.Println(input[i][j])
-			sum = input[i][j] + sum
 		}
-		addArray = append(addArray, sum)
-		//fmt.Println(addArray)
-	}
-	var largest = addArray[0]
-	for k := 0; k < len(addArray); k++ {
-		if largest < addArray[k] {
-			largest = addArray[k]
+		if answer < sum {
+			answer = sum
 		}
 
 	}
-	fmt.Println("largest value:", largest)
+	return answer
+
 }
